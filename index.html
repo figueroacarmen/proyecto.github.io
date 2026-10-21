@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú principal</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .cuadrado {
+            width: 350px;
+            min-height: 350px;
+            padding: 25px;
+            box-sizing: border-box;
+            background-color: pink;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px #999;
+            text-align: center;
+        }
+
+        .opcion {
+            display: block;
+            margin: 15px auto;
+            padding: 12px;
+            width: 75%;
+            background-color: white;
+            border: 2px solid #d94f82;
+            border-radius: 6px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .opcion:hover {
+            background-color: #ffe3ee;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <main class="cuadrado">
+        <h1>Menú principal</h1>
+        <p>Elegí una sección:</p>
+
+        <a class="opcion" href="archivos/menu.html">Archivos</a>
+        <a class="opcion" href="base/menu.html">Base de datos</a>
+        <a class="opcion" href="lineas/curva.php">Líneas</a>
+        <a class="opcion" href="circulos/circulos.html">Círculos</a>
+    </main>
+</body>
+</html>
