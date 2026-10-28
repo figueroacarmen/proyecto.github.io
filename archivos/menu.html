@@ -2,40 +2,14 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Menú de archivos</title>
-  <style>
-    body {
-      margin: 0;
-    }
-    nav {
-      position: fixed;
-      box-sizing: border-box;
-      width: 210px;
-      height: 100vh;
-      padding: 10px;
-      background-color: #f8c8dc;
-    }
-    iframe {
-      margin-left: 210px;
-      width: calc(100% - 210px);
-      height: 100vh;
-      border: 0;
-    }
-    .color {
-      display: block;
-      padding: 10px;
-      color: #5c2940;
-      text-decoration: none;
-    }
-    .color:hover {
-      background-color: #f3aeca;
-    }
-  </style>
+  <link rel="stylesheet" href="../estilo.css">
 </head>
 <body>
   <nav>
-    <a href="bienvenido.html" target="contenido" class="color">MENÚ</a>
+    <a href="../index.html" target="_top" class="color">MENÚ</a>
     <a href="formulario.html" target="contenido" class="color">Registro nuevo</a>
     <a href="mostrar.php" target="contenido" class="color">Mostrar tabla de registros</a>
     <a href="buscar.html" target="contenido" class="color">Buscar registro por ID</a>

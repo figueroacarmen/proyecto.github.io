@@ -37,57 +37,207 @@ if (isset($_POST['borrar'])) {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $titulo; ?></title>
-</head>
-<body>
-    <h1><?php echo $titulo; ?></h1>
+    <link rel="stylesheet" href="../estilo.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    <p>Elegí otro tipo de línea:</p>
-    <a href="horizontales.php">Horizontal</a> |
-    <a href="verticales.php">Vertical</a> |
-    <a href="curva.php">Curva</a> |
-    <a href="curvaderecha.php">Curva a la derecha</a>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 32px 16px;
+            background: linear-gradient(135deg, #fff5fa, #fce4ef);
+            color: #684357;
+            font-family: Arial, sans-serif;
+        }
 
-    <h2>Ingresá las coordenadas</h2>
-    <p>Usá números del 0 al 400.</p>
-    <form method="POST">
-        X inicial: <input type="number" name="x1" min="0" max="400" value="50" required>
-        Y inicial: <input type="number" name="y1" min="0" max="400" value="50" required>
-        <br><br>
-        X final: <input type="number" name="x2" min="0" max="400" value="350" required>
-        Y final: <input type="number" name="y2" min="0" max="400" value="350" required>
-        <br><br>
-        <input type="submit" name="dibujar" value="Dibujar línea">
-        <input type="submit" name="borrar" value="Borrar todas">
-    </form>
+        main {
+            width: min(760px, 100%);
+            margin: 0 auto;
+            padding: 30px;
+            border: 2px solid #f4c5d9;
+            border-radius: 24px;
+            background: #fffafd;
+            box-shadow: 0 12px 32px #d99bb833;
+        }
 
-    <p><?php echo $mensaje; ?></p>
-    <h2>Tu dibujo</h2>
+        h1, h2 {
+            color: #a64d78;
+            text-align: center;
+        }
 
-    // este cuadro es el lugar donde aparecen las lineas 
-    <svg width="402" height="402" style="border: 1px solid black;">
-        <?php
-        // vuelvo a dibujar todas las lineas guardadas
-        foreach ($_SESSION['lineas'] as $linea) {
-            if ($linea[0] == "horizontal") {
-                // una linea horizontal mantiene la misma altura
-                echo "<line x1='$linea[1]' y1='$linea[2]' x2='$linea[3]' y2='$linea[2]' stroke='blue' stroke-width='3' />";
-            } elseif ($linea[0] == "vertical") {
-                // una linea vertical mantiene el mismo ancho
-                echo "<line x1='$linea[1]' y1='$linea[2]' x2='$linea[1]' y2='$linea[4]' stroke='blue' stroke-width='3' />";
-            } elseif ($linea[0] == "curva") {
-                // calculo un punto en el medio para doblar la linea
-                $medioX = ($linea[1] + $linea[3]) / 2;
-                $medioY = ($linea[2] + $linea[4]) / 2 - 50;
-                echo "<path d='M $linea[1] $linea[2] Q $medioX $medioY $linea[3] $linea[4]' fill='none' stroke='blue' stroke-width='3' />";
-            } else {
-                // muevo el punto del medio para hacer una curva a la derecha
-                $medioX = ($linea[1] + $linea[3]) / 2 + 50;
-                $medioY = ($linea[2] + $linea[4]) / 2;
-                echo "<path d='M $linea[1] $linea[2] Q $medioX $medioY $linea[3] $linea[4]' fill='none' stroke='blue' stroke-width='3' />";
+        h1 {
+            margin-top: 0;
+        }
+
+        .intro, .ayuda {
+            text-align: center;
+        }
+
+        .navegacion {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 22px 0 30px;
+        }
+
+        .boton {
+            display: inline-block;
+            padding: 11px 16px;
+            border: 2px solid #e9a9c5;
+            border-radius: 999px;
+            background: #fff0f7;
+            color: #85415f;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .boton:hover {
+            transform: translateY(-2px);
+            background: #fbd8e8;
+        }
+
+        .boton-inicio {
+            border-color: #d783a8;
+            background: #f7c9dc;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: grid;
+            gap: 7px;
+            color: #754d63;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e9b7cc;
+            border-radius: 10px;
+            background: white;
+            color: #684357;
+            font: inherit;
+        }
+
+        .acciones {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            grid-column: 1 / -1;
+            margin-top: 6px;
+        }
+
+        .mensaje {
+            color: #a33f68;
+            text-align: center;
+        }
+
+        .lienzo {
+            display: block;
+            width: min(402px, 100%);
+            height: auto;
+            margin: 0 auto;
+            border: 2px solid #edb5cc;
+            border-radius: 14px;
+            background-color: #fff;
+            background-image: linear-gradient(#f9eaf1 1px, transparent 1px),
+                              linear-gradient(90deg, #f9eaf1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        @media (max-width: 480px) {
+            main {
+                padding: 22px 16px;
+            }
+
+            form {
+                grid-template-columns: 1fr;
+            }
+
+            .acciones {
+                grid-column: auto;
             }
         }
-        ?>
-    </svg>
+    </style>
+</head>
+<body>
+    <main>
+        <h1><?php echo $titulo; ?></h1>
+        <p class="intro">¡Vamos a crear un dibujito bonito!</p>
+
+        <nav class="navegacion" aria-label="Navegación de líneas">
+            <a class="boton boton-inicio" href="../index.html">Volver al inicio</a>
+            <a class="boton" href="horizontales.php">Horizontal</a>
+            <a class="boton" href="verticales.php">Vertical</a>
+            <a class="boton" href="curva.php">Curva</a>
+            <a class="boton" href="curvaderecha.php">Curva a la derecha</a>
+        </nav>
+
+        <section aria-labelledby="coordenadas-titulo">
+            <h2 id="coordenadas-titulo">Ingresá las coordenadas</h2>
+            <p class="ayuda">Usá números del 0 al 400.</p>
+            <form method="POST">
+                <label>X inicial
+                    <input type="number" name="x1" min="0" max="400" value="50" required>
+                </label>
+                <label>Y inicial
+                    <input type="number" name="y1" min="0" max="400" value="50" required>
+                </label>
+                <label>X final
+                    <input type="number" name="x2" min="0" max="400" value="350" required>
+                </label>
+                <label>Y final
+                    <input type="number" name="y2" min="0" max="400" value="350" required>
+                </label>
+                <div class="acciones">
+                    <button class="boton" type="submit" name="dibujar">Dibujar línea</button>
+                    <button class="boton" type="submit" name="borrar">Borrar todas</button>
+                </div>
+            </form>
+        </section>
+
+        <?php if ($mensaje !== ""): ?>
+            <p class="mensaje"><?php echo $mensaje; ?></p>
+        <?php endif; ?>
+
+        <section aria-labelledby="dibujo-titulo">
+            <h2 id="dibujo-titulo">Tu dibujo</h2>
+            <svg class="lienzo" viewBox="0 0 402 402" role="img" aria-label="Dibujo de líneas">
+                <?php
+                foreach ($_SESSION['lineas'] as $linea) {
+                    if ($linea[0] == "horizontal") {
+                        echo "<line x1='$linea[1]' y1='$linea[2]' x2='$linea[3]' y2='$linea[2]' stroke='#d96b9a' stroke-width='4' stroke-linecap='round' />";
+                    } elseif ($linea[0] == "vertical") {
+                        echo "<line x1='$linea[1]' y1='$linea[2]' x2='$linea[1]' y2='$linea[4]' stroke='#d96b9a' stroke-width='4' stroke-linecap='round' />";
+                    } elseif ($linea[0] == "curva") {
+                        $medioX = ($linea[1] + $linea[3]) / 2;
+                        $medioY = ($linea[2] + $linea[4]) / 2 - 50;
+                        echo "<path d='M $linea[1] $linea[2] Q $medioX $medioY $linea[3] $linea[4]' fill='none' stroke='#d96b9a' stroke-width='4' stroke-linecap='round' />";
+                    } else {
+                        $medioX = ($linea[1] + $linea[3]) / 2 + 50;
+                        $medioY = ($linea[2] + $linea[4]) / 2;
+                        echo "<path d='M $linea[1] $linea[2] Q $medioX $medioY $linea[3] $linea[4]' fill='none' stroke='#d96b9a' stroke-width='4' stroke-linecap='round' />";
+                    }
+                }
+                ?>
+            </svg>
+        </section>
+    </main>
 </body>
 </html>

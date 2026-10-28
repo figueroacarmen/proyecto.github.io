@@ -18,7 +18,9 @@ if (isset($_POST['confirmar'])) {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Borrar todos los registros</title>
+    <link rel="stylesheet" href="../estilo.css">
 </head>
 <body>
     <h2>¿Está seguro de borrar todos los registros?</h2>

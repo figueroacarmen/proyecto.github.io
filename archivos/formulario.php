@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado del registro</title>
+    <link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+<main>
+    <h1>Resultado del registro</h1>
+    <p>
 <?php
 include("funciones.php");
 
@@ -41,3 +53,7 @@ fclose($archivo);
 
 echo "Registro guardado correctamente. ID: " . htmlspecialchars((string)$id);
 ?>
+    </p>
+</main>
+</body>
+</html>

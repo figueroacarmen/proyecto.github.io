@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado del borrado</title>
+    <link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+<main>
+    <h1>Resultado del borrado</h1>
+    <p>
 <?php
 include("conexion.php");
 
@@ -20,3 +32,7 @@ if (mysqli_query($conexion, $consulta)) {
 
 mysqli_close($conexion);
 ?>
+    </p>
+</main>
+</body>
+</html>

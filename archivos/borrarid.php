@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado del borrado</title>
+    <link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+<main>
+    <h1>Resultado del borrado</h1>
+    <p>
 <?php
 if (!isset($_POST['id_registro']) || trim($_POST['id_registro']) == "") {
     die("Ingrese el ID que desea borrar.");
@@ -39,3 +51,7 @@ fclose($archivo);
 
 echo "Registro borrado correctamente.";
 ?>
+    </p>
+</main>
+</body>
+</html>
