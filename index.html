@@ -6,7 +6,10 @@
     <title>Menú principal</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
-<body>
+<body class="pagina-inicio">
+    <video class="fondo-video" autoplay muted loop playsinline aria-hidden="true">
+        <source src="videophp.mp4" type="video/mp4">
+    </video>
     <main class="cuadrado">
         <h1>Menú principal</h1>
         <p>Elegí una sección:</p>
@@ -16,5 +19,15 @@
         <a class="opcion" href="lineas/curva.php">Líneas</a>
         <a class="opcion" href="circulos/circulos.html">Círculos</a>
     </main>
+    <div class="carga" id="page-loader" aria-hidden="true" hidden>
+        <div class="carga__tarjeta" role="status" aria-live="polite">
+            <span class="carga__texto">El dibujo está llegando a casa...</span>
+            <div class="carga__camino" aria-hidden="true">
+                <img class="carga__dibujo" src="imagenes/darwin.png" alt="">
+                <img class="carga__casa" src="imagenes/casa.png" alt="">
+            </div>
+        </div>
+    </div>
+    <script src="menu.js"></script>
 </body>
 </html>

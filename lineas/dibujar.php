@@ -56,7 +56,7 @@ if (isset($_POST['borrar'])) {
 
         main {
             width: min(760px, 100%);
-            margin: 0 auto;
+            margin: auto;
             padding: 30px;
             border: 2px solid #f4c5d9;
             border-radius: 24px;
