@@ -39,5 +39,6 @@ if (!$resultado) {
         mysqli_close($conexion);
         ?>
     </table>
+    <a class="boton-volver-menu" href="../index.html" target="_top">Volver al menú</a>
 </body>
 </html>

@@ -182,7 +182,7 @@ if (isset($_POST['borrar'])) {
         <p class="intro">¡Vamos a crear un dibujito bonito!</p>
 
         <nav class="navegacion" aria-label="Navegación de líneas">
-            <a class="boton boton-inicio" href="../index.html">Volver al inicio</a>
+            <a class="boton boton-inicio" href="../index.html">Volver al menú</a>
             <a class="boton" href="horizontales.php">Horizontal</a>
             <a class="boton" href="verticales.php">Vertical</a>
             <a class="boton" href="curva.php">Curva</a>
