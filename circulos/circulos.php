@@ -33,7 +33,7 @@ if (isset($_POST['dibujar'])) {
 
 // preparo el cuadro donde voy a dibujar
 header("Content-Type: image/svg+xml; charset=UTF-8");
-echo "<svg xmlns='http://www.w3.org/2000/svg' width='402' height='402' style='border: 1px solid black;'>";
+echo "<svg xmlns='http://www.w3.org/2000/svg' width='402' height='402' viewBox='0 0 402 402' preserveAspectRatio='xMidYMid meet' style='background-color:#fff;background-image:linear-gradient(#f9eaf1 1px,transparent 1px),linear-gradient(90deg,#f9eaf1 1px,transparent 1px);background-size:20px 20px;'>";
 
 // vuelvo a dibujar todos los circulos que guarde en la sesion
 foreach ($_SESSION['circulos'] as $circulo) {
@@ -46,14 +46,14 @@ foreach ($_SESSION['circulos'] as $circulo) {
 
     if ($forma == "uno") {
         // dibujo un circulo usando el radio elegido
-        echo "<circle cx='$centroX' cy='$centroY' r='$radio' fill='none' stroke='red' stroke-width='2' />";
+        echo "<circle cx='$centroX' cy='$centroY' r='$radio' fill='none' stroke='#d96b9a' stroke-width='3' />";
     } elseif ($forma == "filas") {
         // repito los circulos en tres filas
         for ($fila = 0; $fila < 3; $fila++) {
             for ($i = 0; $i < $cantidad; $i++) {
                 $x = 10 + ($i * 380 / $cantidad);
                 $y = $centroY - $radio + ($fila * $radio);
-                echo "<circle cx='$x' cy='$y' r='$radio' fill='none' stroke='red' stroke-width='2' />";
+                echo "<circle cx='$x' cy='$y' r='$radio' fill='none' stroke='#d96b9a' stroke-width='3' />";
             }
         }
     } elseif ($forma == "equis") {
@@ -63,24 +63,24 @@ foreach ($_SESSION['circulos'] as $circulo) {
             $paso = $i / ($cantidad - 1);
             $x = $centroX - $radio + ($paso * $radio * 2);
             $y = $centroY - $radio + ($paso * $radio * 2);
-            echo "<circle cx='$x' cy='$y' r='5' fill='none' stroke='red' stroke-width='2' />";
+            echo "<circle cx='$x' cy='$y' r='5' fill='none' stroke='#d96b9a' stroke-width='3' />";
 
             // calculo el punto de la otra diagonal
             $y = $centroY + $radio - ($paso * $radio * 2);
-            echo "<circle cx='$x' cy='$y' r='5' fill='none' stroke='red' stroke-width='2' />";
+            echo "<circle cx='$x' cy='$y' r='5' fill='none' stroke='#d96b9a' stroke-width='3' />";
         }
     } elseif ($forma == "concentricos") {
         // dibujo circulos con el mismo centro y radios diferentes
         for ($i = 1; $i <= $cantidad; $i++) {
             $radioNuevo = $radio * $i / $cantidad;
-            echo "<circle cx='$centroX' cy='$centroY' r='$radioNuevo' fill='none' stroke='red' stroke-width='2' />";
+            echo "<circle cx='$centroX' cy='$centroY' r='$radioNuevo' fill='none' stroke='#d96b9a' stroke-width='3' />";
         }
     } elseif ($forma == "tamanos") {
         // dibujo una fila de circulos que aumentan de tamaño
         for ($i = 0; $i < $cantidad; $i++) {
             $x = 10 + ($i * 380 / $cantidad);
             $radioNuevo = $radio * ($i + 1) / $cantidad;
-            echo "<circle cx='$x' cy='$centroY' r='$radioNuevo' fill='none' stroke='red' stroke-width='2' />";
+            echo "<circle cx='$x' cy='$centroY' r='$radioNuevo' fill='none' stroke='#d96b9a' stroke-width='3' />";
         }
     } elseif ($forma == "redondo") {
         // uso seno y coseno para ubicar puntos alrededor del centro
@@ -89,7 +89,7 @@ foreach ($_SESSION['circulos'] as $circulo) {
             $angulo = 2 * pi() * $i / $cantidad;
             $x = sin($angulo) * $radio + $centroX;
             $y = cos($angulo) * $radio + $centroY;
-            echo "<circle cx='$x' cy='$y' r='5' fill='none' stroke='red' stroke-width='2' />";
+            echo "<circle cx='$x' cy='$y' r='5' fill='none' stroke='#d96b9a' stroke-width='3' />";
         }
     } elseif ($forma == "flor") {
         // ubico circulos alrededor del centro para formar una flor
@@ -97,7 +97,7 @@ foreach ($_SESSION['circulos'] as $circulo) {
             $angulo = 2 * pi() * $i / $cantidad;
             $x = sin($angulo) * $radio / 2 + $centroX;
             $y = cos($angulo) * $radio / 2 + $centroY;
-            echo "<circle cx='$x' cy='$y' r='$radio' fill='none' stroke='red' stroke-width='2' />";
+            echo "<circle cx='$x' cy='$y' r='$radio' fill='none' stroke='#d96b9a' stroke-width='3' />";
         }
     }
 }

@@ -48,5 +48,6 @@ if (!$fila) {
         <br><br>
         <input type="submit" value="Guardar cambios">
     </form>
+    <a class="boton-volver-menu" href="../index.html" target="_top">Volver al menú</a>
 </body>
 </html>

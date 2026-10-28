@@ -33,6 +33,7 @@ if (mysqli_query($conexion, $consulta)) {
 mysqli_close($conexion);
 ?>
     </p>
+    <a class="boton-volver-menu" href="../index.html" target="_top">Volver al menú</a>
 </main>
 </body>
 </html>

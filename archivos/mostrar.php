@@ -41,5 +41,6 @@ if (!$hayRegistros) {
     echo "<p>No hay registros guardados.</p>";
 }
 ?>
+<a class="boton-volver-menu" href="../index.html" target="_top">Volver al menú</a>
 </body>
 </html>

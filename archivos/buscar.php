@@ -47,5 +47,6 @@ if (!$encontrado) {
     echo "<p>No se encontró el registro.</p>";
 }
 ?>
+<a class="boton-volver-menu" href="../index.html" target="_top">Volver al menú</a>
 </body>
 </html>

@@ -229,6 +229,39 @@ iframe {
     box-shadow: var(--sombra);
 }
 
+.lienzo-frame {
+    width: min(402px, 100%);
+    height: auto;
+    aspect-ratio: 1;
+    border: 2px solid var(--borde);
+    border-radius: 20px;
+    background:
+        linear-gradient(#f9eaf1 1px, transparent 1px),
+        linear-gradient(90deg, #f9eaf1 1px, transparent 1px),
+        #fff;
+    background-size: 20px 20px;
+    box-shadow: 0 14px 32px rgb(94 47 77 / 14%);
+}
+
+.form-circulos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 18px;
+    width: min(540px, 100%);
+    margin: 0 auto 28px;
+}
+
+.form-circulos .acciones {
+    grid-column: 1 / -1;
+    margin-top: 6px;
+}
+
+.zona-dibujo {
+    display: grid;
+    justify-items: center;
+    gap: 8px;
+}
+
 .cuadrado {
     width: min(460px, 100%);
     min-height: 0;
@@ -262,6 +295,35 @@ iframe {
     transform: translateY(-2px);
     background: #fde7f1;
     box-shadow: 0 9px 22px rgb(75 38 60 / 13%);
+}
+
+.boton-volver-menu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    margin: 18px auto 0;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #df73a3, #bd4f82);
+    box-shadow: 0 7px 16px rgb(189 79 130 / 20%);
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+.boton-volver-menu:hover,
+.boton-volver-menu:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgb(189 79 130 / 28%);
+    filter: saturate(1.1);
+}
+
+.boton-volver-menu:focus-visible {
+    outline: 3px solid rgb(214 91 145 / 35%);
+    outline-offset: 3px;
 }
 
 body:has(> nav + iframe) {
@@ -449,6 +511,14 @@ body:has(> nav + iframe) > iframe {
         width: min(100%, 430px);
         padding: 24px 18px;
         border-radius: 22px;
+    }
+
+    .form-circulos {
+        grid-template-columns: 1fr;
+    }
+
+    .form-circulos .acciones {
+        grid-column: auto;
     }
 
     .opcion {

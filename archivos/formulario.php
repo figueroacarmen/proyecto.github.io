@@ -54,6 +54,7 @@ fclose($archivo);
 echo "Registro guardado correctamente. ID: " . htmlspecialchars((string)$id);
 ?>
     </p>
+    <a class="boton-volver-menu" href="../index.html" target="_top">Volver al menú</a>
 </main>
 </body>
 </html>

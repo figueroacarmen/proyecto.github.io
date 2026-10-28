@@ -9,7 +9,7 @@
 <body>
     <main>
       <h1>Dibujar círculos</h1>
-      <form action="circulos.php" method="POST" target="dibujo">
+      <form class="form-circulos" action="circulos.php" method="POST" target="dibujo">
         <label>Forma
           <select name="forma">
             <option value="uno">Un círculo</option>
@@ -30,8 +30,11 @@
           <input type="submit" name="borrar" value="Borrar todo">
         </div>
       </form>
-      <h2>El dibujo</h2>
-      <iframe src="circulos.php" name="dibujo" width="420" height="420"></iframe>
+      <section class="zona-dibujo" aria-labelledby="dibujo-titulo">
+        <h2 id="dibujo-titulo">El dibujo</h2>
+        <iframe class="lienzo-frame" src="circulos.php" name="dibujo" title="Lienzo de círculos"></iframe>
+      </section>
+      <a class="boton-volver-menu" href="../index.html">Volver al menú</a>
     </main>
 </body>
 </html>
