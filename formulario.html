@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro nuevo</title>
+    <link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+    <h2>Registro nuevo</h2>
+    <p>Usá solo datos ficticios para practicar.</p>
+    <form action="formulario.php" method="POST">
+        Nombre: <input type="text" name="nombre" maxlength="100" required>
+        <br><br>
+        Correo: <input type="email" name="correo" maxlength="250" required>
+        <br><br>
+        Edad: <input type="number" name="edad" min="1" required>
+        <br><br>
+        DNI: <input type="number" name="dni" min="1" required>
+        <br><br>
+        Contraseña: <input type="password" name="contrasena" maxlength="250" required>
+        <br><br>
+        <input type="submit" value="Guardar">
+    </form>
+</body>
+</html>
