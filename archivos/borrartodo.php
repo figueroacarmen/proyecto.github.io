@@ -10,7 +10,21 @@ if (isset($_POST['confirmar'])) {
     }
     fclose($archivo);
 
-    echo "Todos los registros fueron borrados.";
+    echo '<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registros borrados</title>
+    <link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+    <main>
+        <h1>Todos los registros fueron borrados.</h1>
+        <a class="boton-volver-menu" href="../index.html" target="_top">Volver al menú</a>
+    </main>
+</body>
+</html>';
     exit;
 }
 ?>
@@ -27,5 +41,6 @@ if (isset($_POST['confirmar'])) {
     <form action="borrartodo.php" method="POST">
         <input type="submit" name="confirmar" value="Sí, borrar todos">
     </form>
+    <a class="boton-volver-menu" href="../index.html" target="_top">Volver al menú</a>
 </body>
 </html>
