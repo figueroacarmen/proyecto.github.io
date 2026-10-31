@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dibujar líneas</title>
+    <link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+    <main>
+        <h1>Dibujar líneas</h1>
+        <nav class="navegacion-principal" aria-label="Navegación principal">
+            <a class="boton-volver" href="../index.html">Volver al menú</a>
+        </nav>
+        <p>Los dibujos se guardan solo en este navegador.</p>
+        <form id="line-form" class="form-circulos">
+            <label>Tipo
+                <select name="tipo">
+                    <option value="horizontal">Horizontal</option>
+                    <option value="vertical">Vertical</option>
+                    <option value="curva">Curva</option>
+                    <option value="curvaderecha">Curva a la derecha</option>
+                </select>
+            </label>
+            <label>X inicial<input type="number" name="x1" min="0" max="400" value="50" required></label>
+            <label>Y inicial<input type="number" name="y1" min="0" max="400" value="50" required></label>
+            <label>X final<input type="number" name="x2" min="0" max="400" value="350" required></label>
+            <label>Y final<input type="number" name="y2" min="0" max="400" value="350" required></label>
+            <div class="acciones">
+                <button type="submit">Dibujar línea</button>
+                <button type="button" id="clear-lines">Borrar todas</button>
+            </div>
+        </form>
+        <h2>Tu dibujo</h2>
+        <svg id="line-canvas" class="lienzo-frame" viewBox="0 0 402 402" role="img" aria-label="Dibujo de líneas"></svg>
+        <p id="line-status" role="status"></p>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>

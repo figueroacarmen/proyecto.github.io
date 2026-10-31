@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dibujar círculos</title>
+    <link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+    <main>
+      <h1>Dibujar círculos</h1>
+      <nav class="navegacion-principal" aria-label="Navegación principal">
+        <a class="boton-volver" href="../index.html">Volver al menú</a>
+      </nav>
+      <form class="form-circulos" id="circle-form">
+        <label>Forma
+          <select name="forma">
+            <option value="uno">Un círculo</option>
+            <option value="filas">Filas de círculos</option>
+            <option value="equis">Círculos en X</option>
+            <option value="concentricos">Círculos concéntricos</option>
+            <option value="tamanos">Círculos de distintos tamaños</option>
+            <option value="redondo">Círculos alrededor del centro</option>
+            <option value="flor">Flor de círculos</option>
+          </select>
+        </label>
+        <label>Centro X<input type="number" name="x" min="0" max="400" value="200" required></label>
+        <label>Centro Y<input type="number" name="y" min="0" max="400" value="200" required></label>
+        <label>Radio (tamaño)<input type="number" name="radio" min="5" max="80" value="30" required></label>
+        <label>Cantidad<input type="number" name="cantidad" min="2" max="50" value="12" required></label>
+        <div class="acciones">
+          <input type="submit" name="dibujar" value="Dibujar">
+          <input type="submit" name="borrar" value="Borrar todo">
+        </div>
+      </form>
+      <section class="zona-dibujo" aria-labelledby="dibujo-titulo">
+        <h2 id="dibujo-titulo">El dibujo</h2>
+        <svg id="circle-canvas" class="lienzo-frame" viewBox="0 0 402 402" role="img" aria-label="Dibujo de círculos"></svg>
+        <p id="circle-status" role="status"></p>
+      </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
